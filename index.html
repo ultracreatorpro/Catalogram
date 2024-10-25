@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Canales de Telegram</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+        }
+        header, footer {
+            background-color: #5188e0;
+            color: #fff;
+            padding: 10px 5px;
+            text-align: center;
+        }
+        main {
+            padding: 8px;
+        }
+        .section {
+            margin-bottom: 10px;
+        }
+        .channel-card {
+            background-color: #fff;
+            padding: 15px;
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .channel-card h3 {
+            margin-top: 0;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        /* Estilos para el menú de imágenes */
+        .image-slider {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            margin: 20px 0;
+            border-radius: 15px;
+            position: relative;
+        }
+        .image-slider img {
+            width: 100%;
+            height: auto;
+            flex: 0 0 100%;
+            transition: opacity 1s ease-in-out;
+        }
+        .image-slider-wrapper {
+            display: flex;
+            animation: scroll 8s linear infinite;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-100%); }
+            50% { transform: translateX(-200%); }
+            75% { transform: translateX(-300%); }
+            100% { transform: translateX(0); }
+        }
+        /* Estilos para la sección de categoría de canales */
+        .category-section {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        /* Estilos para el menú inferior */
+        .footer-menu {
+            background-color: #033a91;
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 5px 0; /* Altura reducida */
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            left: 0;
+        }
+        .footer-menu .btn {
+            flex: 1;
+            text-align: center;
+            margin: 0 5px;
+        }
+        /* Estilos para la sección de información adicional */
+        .additional-info {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            background-color: white;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <h1 style="font-size: 1em; color: #fcfdff;">Catálogo de Canales de Telegram</h1>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main>
+        
+        <!-- Menú de Scroll Automático -->
+        <div class="image-slider">
+            <div class="image-slider-wrapper">
+                <img src="https://fmglobo.com/u/fotografias/m/2024/6/5/f960x540-12505_86580_5050.jpg" alt="Imagen 1" />
+                <img src="https://cinepremiere.com.mx/wp-content/uploads/2023/11/lift-pelicula-900x506.jpg" alt="Imagen 2" />
+                <img src="https://sportshub.cbsistatic.com/i/2023/12/11/58b969c0-aca4-4145-916a-b7fd56f595fb/furiosa-mad-max-poster-header.jpg" alt="Imagen 3" />
+                <img src="https://www.diariodevenusville.com/wp-content/uploads/2024/06/GRU-4-MI-VILLANO-FAVORITO-poster-00.jpg" alt="Imagen 4" />
+            </div>
+        </div>
+
+        <p style="font-size: 1em; font-weight: bold; text-align: center;">Encuentra los mejores canales para promocionar tu contenido en Telegram</p>
+
+<h2 style="font-size: 1.5em; color: #007bff; text-align: center;">Categoría de Canales</h2>
+
+       <!-- Sección de categorías -->
+<section class="section" id="featured-section">
+    <div class="channel-card">
+        <img src="https://i.ibb.co/nBpqSZM/IMG-20241025-042237-987.jpg" alt="Imagen Canal 1" style="max-width: 70%; height: auto; margin: 20px auto; display: block;" />
+        <h3>Canales de Películas</h3>
+        <p><strong>Descripción:</strong> Canales enfocados en audiovisuales como películas y series.</p>
+        <a href="#" class="btn">Ver Detalles</a>
+    </div>
+        </section>
+
+        <!-- Sección de destacados -->
+<section class="section" id="featured-section">
+    <h2 style="text-align: center;">Canales Destacados</h2>
+    <div class="channel-card">
+        <img src="https://i.ibb.co/nBpqSZM/IMG-20241025-042237-987.jpg" alt="Imagen Canal 1" style="max-width: 70%; height: auto; margin: 20px auto; display: block;" />
+        <h3>Estrenos de Películas</h3>
+        <p><strong>Descripción:</strong> Canal enfocado en recomendaciones de películas y series.</p>
+        <p><strong>Seguidores:</strong> 7.1k | <strong>Idioma:</strong> Español</p>
+        <a href="#" class="btn">Ver Detalles</a>
+    </div>
+        </section>
+
+        <!-- Sección de información adicional -->
+        <section class="section">
+            <h2 style="text-align: center;">Estadísticas</h2>
+            <div class="additional-info">
+                <p>Usuarios: 116</p>
+                <p>Pedidos: 58</p>
+                <p>Canales: 35</p>
+            </div>
+        </section>
+
+        <!-- Sección de valoración -->
+        <section class="section" id="review-section">
+            <h2>Opiniones y Valoraciones</h2>
+            <p>Consulta opiniones de otros usuarios para elegir el canal perfecto para tu promoción.</p>
+            <div class="channel-card">
+                <h3>Reseña de Canal Ejemplo 1</h3>
+                <p>“Muy buen alcance, cumplió las expectativas en mi campaña de publicidad.”</p>
+            </div>
+            <div class="channel-card">
+                <h3>Reseña de Canal Ejemplo 2</h3>
+                <p>“Excelente canal con buena tasa de interacción.”</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Menú Inferior -->
+    <div class="footer-menu">
+        <a href="#inicio" class="btn">Inicio</a>
+        <a href="anunciate.html" class="btn">Anúnciate</a>
+        <a href="agregar.html" class="btn">Agregar</a>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>© 2024 Catálogram. Todos los derechos reservados.</p>
+    </footer>
+
+<h2>Información Adicional</h2>
+</body>
+</html>
