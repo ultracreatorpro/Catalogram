@@ -90,6 +90,28 @@
         #movies-series-section .buy-button:hover {
             background-color: #218838;
         }
+
+        /* Contenedor de Telegram */
+        #telegram-contact {
+            background-color: #fff;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin: 15px auto;
+            padding: 20px;
+            text-align: center;
+            max-width: 300px;
+        }
+
+        #telegram-contact a {
+            text-decoration: none;
+            color: #5188e0;
+            font-weight: bold;
+        }
+
+        #telegram-contact a:hover {
+            text-decoration: underline;
+        }
+
         /* Menú inferior */
         .bottom-menu {
             position: fixed;
@@ -113,6 +135,7 @@
         .bottom-menu a:hover {
             color: #ffeb3b;
         }
+
         footer {
             background-color: #1e6ce8;
             color: #fff;
@@ -130,47 +153,55 @@
 
         <p style="font-size: 1em; font-weight: bold; text-align: center;">Encuentra los mejores canales para promocionar tu contenido en Telegram</p>
 
-<h3 style="font-size: 1em; font-weight: bold; text-align: center;">Requisitos y condiciones:</h3>
-    <ul>
-        <li>Pérdida de peso y reducción de grasa abdominal</li>
-        <li>Reducción del apetito</li>
-        <li>Mejora de la sensibilidad a la insulina y controla los niveles de azúcar en sangre</li>
-        <li>Energía estable y mejora la claridad mental</li>
-        <li>Mejora de la salud cardiovascular</li>
-        <li>Reducción de triglicéridos</li>
-        <li>Mejora de la piel y el acné</li>
-    </ul>
+        <h3 style="font-size: 1em; font-weight: bold; text-align: center;">Requisitos y condiciones:</h3>
+        <ul>
+            <li>Pérdida de peso y reducción de grasa abdominal</li>
+            <li>Reducción del apetito</li>
+            <li>Mejora de la sensibilidad a la insulina y controla los niveles de azúcar en sangre</li>
+            <li>Energía estable y mejora la claridad mental</li>
+            <li>Mejora de la salud cardiovascular</li>
+            <li>Reducción de triglicéridos</li>
+            <li>Mejora de la piel y el acné</li>
+        </ul>
 
-    <!-- Pie de página -->
-    <footer>
-        <p>© 2024 Catálogram. Todos los derechos reservados.</p>
-    </footer>
+        <!-- Contenedor de contacto Telegram -->
+        <div id="telegram-contact">
+            <h3>¿Tienes preguntas?</h3>
+            <p>Escríbeme en Telegram:</p>
+            <a href="https://t.me/PubliAdmin" target="_blank">Abrir chat en Telegram</a>
+        </div>
+
+        <!-- Pie de página -->
+        <footer>
+            <p>© 2024 Catálogram. Todos los derechos reservados.</p>
+        </footer>
+        
+        <!-- Menú inferior -->
+        <div class="bottom-menu">
+            <a href="index.html">Inicio</a>
+            <a href="#anunciate">Anúnciate</a>
+            <a href="agregar.html">Agregar</a>
+        </div>
+    </section>
     
-    <!-- Menú inferior -->
-    <div class="bottom-menu">
-        <a href="index.html">Inicio</a>
-        <a href="#anunciate">Anúnciate</a>
-        <a href="agregar.html">Agregar</a>
-    </div>
-    
-<script>
-    // Función de búsqueda de canales
-    document.getElementById("search-bar").addEventListener("input", function() {
-        const query = this.value.toLowerCase();
-        const channels = document.querySelectorAll(".channel-card");
+    <script>
+        // Función de búsqueda de canales
+        document.getElementById("search-bar").addEventListener("input", function() {
+            const query = this.value.toLowerCase();
+            const channels = document.querySelectorAll(".channel-card");
 
-        channels.forEach(channel => {
-            const title = channel.querySelector("h3").textContent.toLowerCase();
-            const description = channel.querySelector("p").textContent.toLowerCase();
+            channels.forEach(channel => {
+                const title = channel.querySelector("h3").textContent.toLowerCase();
+                const description = channel.querySelector("p").textContent.toLowerCase();
 
-            // Muestra u oculta el canal según si coincide con la búsqueda
-            if (title.includes(query) || description.includes(query)) {
-                channel.style.display = "block";
-            } else {
-                channel.style.display = "none";
-            }
+                // Muestra u oculta el canal según si coincide con la búsqueda
+                if (title.includes(query) || description.includes(query)) {
+                    channel.style.display = "block";
+                } else {
+                    channel.style.display = "none";
+                }
+            });
         });
-    });
 
         document.addEventListener("DOMContentLoaded", function() {
             const starRatings = document.querySelectorAll(".star-rating");
