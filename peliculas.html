@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Películas y Series</title>
+    <style>
+        /* Estilo de fondo general */
+        body {
+            background-color: #f4f4f9;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Estilo de la cabecera */
+        #movies-series-section .header {
+            background-color: #5188e0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #movies-series-section .header h2 {
+            color: #fff;
+            margin: 0;
+            font-size: 20px;
+        }
+
+        /* Estilos de la tarjeta de canal */
+        #movies-series-section .channel-card {
+            background-color: #fff;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin: 15px auto;
+            padding: 20px;
+            text-align: center;
+            max-width: 300px;
+        }
+
+        #movies-series-section .channel-image {
+            width: 100%;
+            height: auto;
+            max-width: 250px;
+            border-radius: 10px;
+            margin: 10px auto;
+        }
+
+        #movies-series-section .channel-title {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .channel-card h3 {
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        .channel-card p {
+            margin: 5px 0;
+        }
+
+        /* Estilo de la tabla de estrellas */
+        #movies-series-section .star-rating {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        #movies-series-section .star {
+            font-size: 20px;
+            cursor: pointer;
+            color: #ccc;
+        }
+
+        #movies-series-section .star.selected {
+            color: #ffb400;
+        }
+
+        /* Botón de Comprar */
+        #movies-series-section .buy-button {
+            display: inline-block;
+            background-color: #28a745;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        #movies-series-section .buy-button:hover {
+            background-color: #218838;
+        }
+        /* Menú inferior */
+        .bottom-menu {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #5188e0;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+
+        .bottom-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            text-align: center;
+            flex: 1;
+        }
+
+        .bottom-menu a:hover {
+            color: #ffeb3b;
+        }
+    </style>
+</head>
+<body>
+    <section id="movies-series-section">
+        <!-- Cabecera -->
+        <div class="header">
+            <h2>Películas y Series</h2> 
+        </div>
+
+        <!-- Tarjetas de Canales -->
+        <div class="channel-card">
+            <img src="https://i.ibb.co/nBpqSZM/IMG-20241025-042237-987.jpg" alt="Imagen del Canal" class="channel-image">
+            <h3 class="channel-title">Estrenos de Películas</h3>
+            <p><strong>Seguidores:</strong> 7.1k</p>
+            <p><strong>Idioma:</strong> Español</p>
+            <p><strong>Vistas por post:</strong> +600</p>
+            <p><strong>Precio por 24h:</strong> $6.00</p>
+
+            <!-- Tabla de puntuación de estrellas -->
+            <div class="star-rating" data-channel="estrenos-de-peliculas">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+            </div>
+
+            <!-- Botón de Comprar -->
+            <a href="https://t.me/PubliAdmin?start=Hola%2C%20deseo%20contratar%20publicidad%20en%20el%20canal%20Estrenos%20de%20Películas%2C%20número%3A%201%2C%20precio%3A%20%246.00." target="_blank" class="buy-button">🛍 Contratar $6.00</a>
+        </div>
+    </section>
+
+    <!-- Menú inferior -->
+    <div class="bottom-menu">
+        <a href="#inicio">Inicio</a>
+        <a href="anunciate.html">Anúnciate</a>
+        <a href="agregar.html">Agregar</a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const starRatings = document.querySelectorAll(".star-rating");
+
+            starRatings.forEach(rating => {
+                const channel = rating.getAttribute("data-channel");
+                const stars = rating.querySelectorAll(".star");
+                const savedRating = localStorage.getItem(channel);
+
+                if (savedRating) {
+                    setRating(stars, savedRating);
+                }
+
+                stars.forEach(star => {
+                    star.addEventListener("click", function() {
+                        if (!savedRating) {
+                            const ratingValue = this.getAttribute("data-value");
+                            localStorage.setItem(channel, ratingValue);
+                            setRating(stars, ratingValue);
+                        }
+                    });
+                });
+            });
+
+            function setRating(stars, rating) {
+                stars.forEach(star => {
+                    star.classList.remove("selected");
+                    if (star.getAttribute("data-value") <= rating) {
+                        star.classList.add("selected");
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
