@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crypto y Trading</title>
+    <title>Películas y Series</title>
     <style>
         /* Estilo de fondo general */
         body {
@@ -23,6 +23,45 @@
             color: #fff;
             margin: 0;
             font-size: 20px;
+        }
+
+        /* Contenedor de los iconos */
+        #icon-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #icon-container h3 {
+            text-align: center;
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+
+        /* Popup */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            z-index: 1000;
+            font-size: 14px;
         }
 
         /* Estilos de la tarjeta de canal */
@@ -111,7 +150,7 @@
             font-weight: bold;
             font-size: 20px;
         }
-
+        
         /* Menú inferior */
         .bottom-menu {
             position: fixed;
@@ -135,7 +174,6 @@
         .bottom-menu a:hover {
             color: #ffeb3b;
         }
-
         footer {
             background-color: #1e6ce8;
             color: #fff;
@@ -148,16 +186,25 @@
     <section id="movies-series-section">
         <!-- Cabecera -->
         <div class="header">
-            <h2>Crypto y Trading</h2> 
+            <h2>Películas y Series</h2> 
         </div>
 
         <p style="font-size: 1em; font-weight: bold; text-align: center;">Encuentra los mejores canales para promocionar tu contenido en Telegram</p>
 
+        <!-- Contenedor de iconos -->
+        <div id="icon-container">
+            <img src="https://cdn-icons-png.flaticon.com/512/4251/4251687.png" alt="Icono 1" class="icon" onclick="showPopup('Diamante rojo significa: Más ventas')">
+            <img src="https://cdn-icons-png.flaticon.com/512/329/329619.png" alt="Icono 2" class="icon" onclick="showPopup('Diamante amarillo significa: Canales VIP')">
+            <img src="https://cdn-icons-png.flaticon.com/512/408/408421.png" alt="Icono 3" class="icon" onclick="showPopup('Diamante azul significa: Exclusivo')">
+            <img src="https://cdn-icons-png.flaticon.com/512/636/636600.png" alt="Icono 4" class="icon" onclick="showPopup('Diamante blanco significa: Recién agregado')">
+        </div>
+
+        <!-- Barra de búsqueda -->
         <div style="text-align: center; margin-bottom: 20px;">
             <input type="text" id="search-bar" placeholder="Buscar canales..." style="padding: 10px; width: 80%; max-width: 400px; font-size: 1em;">
         </div>
 
-        <!-- Tarjetas de Canales -->
+         <!-- Tarjetas de Canales -->
         <div class="channel-card">
             <!-- Ícono e ID -->
             <img src="https://cdn-icons-png.flaticon.com/512/408/408421.png" alt="Ícono" class="icon-top-left">
@@ -196,24 +243,38 @@
         <a href="agregar.html">Agregar</a>
     </div>
 
-<script>
-    // Función de búsqueda de canales
-    document.getElementById("search-bar").addEventListener("input", function() {
-        const query = this.value.toLowerCase();
-        const channels = document.querySelectorAll(".channel-card");
+    <!-- Popup -->
+    <div id="popup" class="popup"></div>
+    
+    <script>
+        function showPopup(message) {
+            const popup = document.getElementById('popup');
+            popup.textContent = message;
+            popup.style.display = 'block';
+            
+            // Ocultar el popup después de 5 segundos
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 5000);
+        }
 
-        channels.forEach(channel => {
-            const title = channel.querySelector("h3").textContent.toLowerCase();
-            const description = channel.querySelector("p").textContent.toLowerCase();
+        // Función de búsqueda de canales
+        document.getElementById("search-bar").addEventListener("input", function() {
+            const query = this.value.toLowerCase();
+            const channels = document.querySelectorAll(".channel-card");
 
-            // Muestra u oculta el canal según si coincide con la búsqueda
-            if (title.includes(query) || description.includes(query)) {
-                channel.style.display = "block";
-            } else {
-                channel.style.display = "none";
-            }
+            channels.forEach(channel => {
+                const title = channel.querySelector("h3").textContent.toLowerCase();
+                const description = channel.querySelector("p").textContent.toLowerCase();
+
+                // Muestra u oculta el canal según si coincide con la búsqueda
+                if (title.includes(query) || description.includes(query)) {
+                    channel.style.display = "block";
+                } else {
+                    channel.style.display = "none";
+                }
+            });
         });
-    });
 
         document.addEventListener("DOMContentLoaded", function() {
             const starRatings = document.querySelectorAll(".star-rating");
