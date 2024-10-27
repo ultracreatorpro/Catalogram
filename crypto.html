@@ -34,6 +34,7 @@
             padding: 20px;
             text-align: center;
             max-width: 300px;
+            position: relative;
         }
 
         #movies-series-section .channel-image {
@@ -90,6 +91,27 @@
         #movies-series-section .buy-button:hover {
             background-color: #218838;
         }
+
+        /* Ícono y ID */
+        .icon-top-left {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 40px;
+            height: 40px;
+        }
+
+        .id-top-right {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ffeb3b;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
         /* Menú inferior */
         .bottom-menu {
             position: fixed;
@@ -113,6 +135,7 @@
         .bottom-menu a:hover {
             color: #ffeb3b;
         }
+
         footer {
             background-color: #1e6ce8;
             color: #fff;
@@ -131,17 +154,20 @@
         <p style="font-size: 1em; font-weight: bold; text-align: center;">Encuentra los mejores canales para promocionar tu contenido en Telegram</p>
 
         <div style="text-align: center; margin-bottom: 20px;">
-    <input type="text" id="search-bar" placeholder="Buscar canales..." style="padding: 10px; width: 80%; max-width: 400px; font-size: 1em;">
-</div>
+            <input type="text" id="search-bar" placeholder="Buscar canales..." style="padding: 10px; width: 80%; max-width: 400px; font-size: 1em;">
+        </div>
 
         <!-- Tarjetas de Canales -->
         <div class="channel-card">
+            <!-- Ícono e ID -->
+            <img src="https://cdn-icons-png.flaticon.com/512/408/408421.png" alt="Ícono" class="icon-top-left">
+            <span class="id-top-right">ID #1</span>
+
             <img src="https://i.ibb.co/VWQq0D5/photo-4965488566981471585-x.jpg" alt="Imagen del Canal" class="channel-image">
             <h3 class="channel-title">Android Crypto</h3>
             <p><strong>Seguidores:</strong> 3k</p>
             <p><strong>Idioma:</strong> Español</p>
             <p><strong>Vistas por post:</strong> +500</p>
-            <p><strong>Número de ID:</strong> #1</p>
             <p><strong>Precio por 24h:</strong> $6.00</p>
 
             <!-- Tabla de puntuación de estrellas -->
@@ -169,7 +195,7 @@
         <a href="anunciate.html">Anúnciate</a>
         <a href="agregar.html">Agregar</a>
     </div>
-    
+
 <script>
     // Función de búsqueda de canales
     document.getElementById("search-bar").addEventListener("input", function() {
