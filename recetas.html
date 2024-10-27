@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recetas de Cocina</title>
+    <style>
+        /* Estilo de fondo general */
+        body {
+            background-color: #f4f4f9;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Estilo de la cabecera */
+        #movies-series-section .header {
+            background-color: #5188e0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #movies-series-section .header h2 {
+            color: #fff;
+            margin: 0;
+            font-size: 20px;
+        }
+
+        /* Contenedor de los iconos */
+        #icon-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #icon-container h3 {
+            text-align: center;
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+
+        /* Popup */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            z-index: 1000;
+            font-size: 14px;
+        }
+
+        /* Estilos de la tarjeta de canal */
+        #movies-series-section .channel-card {
+            background-color: #fff;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin: 15px auto;
+            padding: 20px;
+            text-align: center;
+            max-width: 300px;
+            position: relative;
+        }
+
+        #movies-series-section .channel-image {
+            width: 100%;
+            height: auto;
+            max-width: 250px;
+            border-radius: 10px;
+            margin: 10px auto;
+        }
+
+        #movies-series-section .channel-title {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .channel-card h3 {
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        .channel-card p {
+            margin: 5px 0;
+        }
+
+        /* Estilo de la tabla de estrellas */
+        #movies-series-section .star-rating {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        #movies-series-section .star {
+            font-size: 20px;
+            cursor: pointer;
+            color: #ccc;
+        }
+
+        #movies-series-section .star.selected {
+            color: #ffb400;
+        }
+
+        /* Botón de Comprar */
+        #movies-series-section .buy-button {
+            display: inline-block;
+            background-color: #28a745;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        #movies-series-section .buy-button:hover {
+            background-color: #218838;
+        }
+
+        /* Ícono y ID */
+        .icon-top-left {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 40px;
+            height: 40px;
+        }
+
+        .id-top-right {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ffeb3b;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        /* Menú inferior */
+        .bottom-menu {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #5188e0;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+        }
+
+        .bottom-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            text-align: center;
+            flex: 1;
+        }
+
+        .bottom-menu a:hover {
+            color: #ffeb3b;
+        }
+        footer {
+            background-color: #1e6ce8;
+            color: #fff;
+            padding: 5px 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <section id="movies-series-section">
+        <!-- Cabecera -->
+        <div class="header">
+            <h2>Recetas de Cocina</h2> 
+        </div>
+
+        <p style="font-size: 1em; font-weight: bold; text-align: center;">Encuentra los mejores canales para promocionar tu contenido en Telegram</p>
+
+        <!-- Contenedor de iconos -->
+        <div id="icon-container">
+            <img src="https://cdn-icons-png.flaticon.com/512/4251/4251687.png" alt="Icono 1" class="icon" onclick="showPopup('Diamante rojo significa: Más ventas')">
+            <img src="https://cdn-icons-png.flaticon.com/512/329/329619.png" alt="Icono 2" class="icon" onclick="showPopup('Diamante amarillo significa: Canales VIP')">
+            <img src="https://cdn-icons-png.flaticon.com/512/408/408421.png" alt="Icono 3" class="icon" onclick="showPopup('Diamante azul significa: Exclusivo')">
+            <img src="https://cdn-icons-png.flaticon.com/512/636/636600.png" alt="Icono 4" class="icon" onclick="showPopup('Diamante blanco significa: Recién agregado')">
+        </div>
+
+        <!-- Barra de búsqueda -->
+        <div style="text-align: center; margin-bottom: 20px;">
+            <input type="text" id="search-bar" placeholder="Buscar canales..." style="padding: 10px; width: 80%; max-width: 400px; font-size: 1em;">
+        </div>
+
+         <!-- Tarjetas de Canales -->
+        <div class="channel-card">
+
+            <!-- Ícono e ID -->
+            <img src="https://cdn-icons-png.flaticon.com/512/4251/4251687.png" alt="Ícono" class="icon-top-left">
+            <span class="id-top-right">ID #1</span>
+
+            <img src="https://i.ibb.co/Wx8XvRy/photo-4965562122591382739-x.jpg" alt="Imagen del Canal" class="channel-image">
+            <h3 class="channel-title">Recetas de Comida Criolla</h3>
+            <p><strong>Seguidores:</strong> 8.5k</p>
+            <p><strong>Idioma:</strong> Español</p>
+            <p><strong>Vistas por post:</strong> +500</p>
+            <p><strong>Precio por 24h:</strong> $6.00</p>
+
+            <!-- Tabla de puntuación de estrellas -->
+            <div class="star-rating" data-channel="estrenos-de-peliculas">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+            </div>
+
+            <!-- Botón de Comprar -->
+            <a href="https://t.me/PubliAdmin?text=✅%20Me%20interesa%20comprar%20publicidad%20en%20el%20Canal:%20Recetas%20de%20Comida%20Criolla-Categoría:%20Recetas%20-%20número%20de%20ID:%201%20-%20precio%3A%20%246.00" target="_blank" class="buy-button">🛍 Contratar $6.00</a>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>© 2024 Catálogram. Todos los derechos reservados.</p>
+    </footer>
+    
+    <!-- Menú inferior -->
+    <div class="bottom-menu">
+        <a href="index.html">Inicio</a>
+        <a href="anunciate.html">Anúnciate</a>
+        <a href="agregar.html">Agregar</a>
+    </div>
+
+    <!-- Popup -->
+    <div id="popup" class="popup"></div>
+    
+    <script>
+        function showPopup(message) {
+            const popup = document.getElementById('popup');
+            popup.textContent = message;
+            popup.style.display = 'block';
+            
+            // Ocultar el popup después de 5 segundos
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 5000);
+        }
+
+        // Función de búsqueda de canales
+        document.getElementById("search-bar").addEventListener("input", function() {
+            const query = this.value.toLowerCase();
+            const channels = document.querySelectorAll(".channel-card");
+
+            channels.forEach(channel => {
+                const title = channel.querySelector("h3").textContent.toLowerCase();
+                const description = channel.querySelector("p").textContent.toLowerCase();
+
+                // Muestra u oculta el canal según si coincide con la búsqueda
+                if (title.includes(query) || description.includes(query)) {
+                    channel.style.display = "block";
+                } else {
+                    channel.style.display = "none";
+                }
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const starRatings = document.querySelectorAll(".star-rating");
+
+            starRatings.forEach(rating => {
+                const channel = rating.getAttribute("data-channel");
+                const stars = rating.querySelectorAll(".star");
+                const savedRating = localStorage.getItem(channel);
+
+                if (savedRating) {
+                    setRating(stars, savedRating);
+                }
+
+                stars.forEach(star => {
+                    star.addEventListener("click", function() {
+                        if (!savedRating) {
+                            const ratingValue = this.getAttribute("data-value");
+                            localStorage.setItem(channel, ratingValue);
+                            setRating(stars, ratingValue);
+                        }
+                    });
+                });
+            });
+
+            function setRating(stars, rating) {
+                stars.forEach(star => {
+                    star.classList.remove("selected");
+                    if (star.getAttribute("data-value") <= rating) {
+                        star.classList.add("selected");
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
